@@ -1,0 +1,19 @@
+.header{
+    display:flex;
+    background-color: gray;
+    text-align: center;
+}
+.header-col1{
+    flex: 1;
+}
+.header-col2{
+    flex:3;
+}
+
+.header-menu{
+    display:flex;
+}
+.header-menu li{
+    flex: 1;
+    flex-direction: row;
+}

@@ -1,0 +1,23 @@
+.manageitems-table{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 4%;
+}
+.table-header{
+    display: flex;
+    flex-direction: row;
+    margin: 5px 1%;
+}
+.table-header div{
+    flex: 1;
+}
+
+.table-row{
+    display: flex;
+    flex-direction: row;
+    margin: 5px 1%;
+}
+.table-row div{
+    flex: 1;
+    padding: 10px 0px;
+}
