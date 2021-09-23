@@ -1,0 +1,11 @@
+.itempage{
+    display: flex;
+    flex-direction: row;
+}
+
+.itempage-col1{
+    flex: 1;
+}
+.itempage-col2{
+    flex: 1;
+}

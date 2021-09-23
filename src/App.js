@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import {Header, Footer} from './components'
 import { ItemsContext } from './contexts/ItemsContext'
-import { About, Frontpage, ManageItems} from './pages'
+import { About, Frontpage, Item, ManageItems} from './pages'
 import './App.css'
 import db from './config/fbConfig'
 
@@ -26,14 +26,18 @@ const App = () => {
     return (
         <Router>
             <div>
+            <ItemsContext.Provider value={{ItemsList, setItemsList, getItems}}>
                 <Header/>
-                <ItemsContext.Provider value={{ItemsList, setItemsList, getItems}}>
+                
                     <Switch>
                         <Route path="/about">
                             <About/>
                         </Route>
                         <Route path="/manage">
                             <ManageItems/>
+                        </Route>
+                        <Route path="/item/:id">
+                            <Item/>
                         </Route>
                         <Route path="/">
                             <Frontpage/>

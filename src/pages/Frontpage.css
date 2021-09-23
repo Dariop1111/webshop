@@ -1,20 +1,17 @@
 .frontpage-itemlist{
-    background-color: lightblue;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.frontpage-itemlist div{
-    
-    padding: 10px 5%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.frontpage-item{
+    width: 24%;
+    margin: 10px 0.5%;
 }
 
-.frontpage-img{
-    overflow: hidden;
+.frontpage-item h3{
     width: 100%;
-    height: 50%;
-    opacity: 0.8;
+    height: 80px;
+}
+.frontpage-item img{
+    width: 100%;
 }

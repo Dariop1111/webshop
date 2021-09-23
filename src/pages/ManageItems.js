@@ -14,7 +14,7 @@ function RemoveItems() {
     }
 
     return (
-        <div className="manageitems-table">
+        <div className="manageitems-table box">
             <AddItem/>
             <div className="table-header">
                 <div>Ime</div>
@@ -25,7 +25,6 @@ function RemoveItems() {
             {ItemsList.map((item)=>{
                     return <div key={item.id} className="table-row">
                         <div>{item.name}</div>
-                        <div>{item.desc}</div>
                         <div>{item.price} kn</div>
                         <div><button onClick={()=>handleDelete(item.id)}>Delete</button></div>
                         </div>
