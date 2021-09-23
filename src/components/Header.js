@@ -14,9 +14,7 @@ function Header() {
                 <ul className="header-menu">
                     
                     <li><Link to="/about">O nama</Link></li>
-                    <li><Link to="/manage">Lista stvari</Link></li>
-                    <li><Link to="/about">Gdje smo</Link></li>
-                    <li><Link to="/about">Kontakt</Link></li>
+                    <li><Link to="/manage">Uređivanje</Link></li>
                 </ul>
             </div>
         </header>

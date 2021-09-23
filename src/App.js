@@ -5,28 +5,38 @@ import { ItemsContext } from './contexts/ItemsContext'
 import { About, Frontpage, Item, ManageItems} from './pages'
 import './App.css'
 import db from './config/fbConfig'
+import { SlideContext } from './contexts/SlideContext'
 
 const App = () => {
         
     const [ItemsList, setItemsList] = useState([]);
+    const [SlideList, setSlideList] = useState([]);
     // gets items from database and puts them in state
     const getItems=async ()=> {
         const querySnapshot = await db.collection("items").get();
         const items = querySnapshot.docs.map(doc=>{return {...doc.data(), id:doc.id};
         });
         setItemsList(items);
-        console.log("called Items")
+    }
+
+    const getSlides=async ()=>{
+        const querySnapshot = await db.collection("Slides").get();
+        const slides = querySnapshot.docs.map(doc=>{return {...doc.data(), id:doc.id};
+        });
+        setSlideList(slides);
     }
     // calls getItems
     useEffect( ()=>{
         
         getItems();
+        getSlides();
     }, [])
     
     return (
         <Router>
             <div>
             <ItemsContext.Provider value={{ItemsList, setItemsList, getItems}}>
+            <SlideContext.Provider value={{SlideList, setSlideList, getSlides}}>
                 <Header/>
                 
                     <Switch>
@@ -43,6 +53,7 @@ const App = () => {
                             <Frontpage/>
                         </Route>
                     </Switch>
+                </SlideContext.Provider>
                 </ItemsContext.Provider>
                 <Footer/>
             </div>
