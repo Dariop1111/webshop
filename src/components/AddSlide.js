@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import db from '../config/fbConfig';
 import { SlideContext } from '../contexts/SlideContext';
 import AddImage from './AddImage';
-import './managerPage.css'
 
 function AddSlide() {
 

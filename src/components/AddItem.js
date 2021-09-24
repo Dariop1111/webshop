@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import db from '../config/fbConfig';
 import { CategoryContext, ItemsContext } from '../contexts';
 import AddImage from './AddImage';
-import './managerPage.css'
 
 function AddItem() {
 

@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react'
 import db from '../config/fbConfig';
 import { CategoryContext } from '../contexts';
-import './managerPage.css'
-
 function AddCategory() {
 
     const defaultCategory={name:""};

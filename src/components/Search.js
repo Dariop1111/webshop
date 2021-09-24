@@ -1,20 +1,22 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { ItemsContext } from '../contexts/ItemsContext';
+import { CategoryContext, ItemsContext } from '../contexts';
 
 function Search() {
     const [dropdown, setDropdown] = useState(false);
     const [searchText, setSearchText] = useState("");
     const {ItemsList} = useContext(ItemsContext);
+    const {CategoryList} = useContext(CategoryContext);
+
     const filterItems = ()=>{
         const filteredItems = ItemsList.filter((item)=>item.name.toLowerCase().includes(searchText.toLowerCase()))
-        return searchText!==""?filteredItems:ItemsList;
+        return searchText!==""?filteredItems:[];
         }
     return (
             <div className="search header-col3 dropdown" >
                    {dropdown && <div className="dropdown-content" onMouseLeave={()=>{setDropdown(false)}}
                     >
-                    {filterItems().map((item)=>{
+                    {searchText!==""?filterItems().map((item)=>{
                         return <div key={item.id} className="search-item">
                             <Link to={
                                 {
@@ -26,7 +28,17 @@ function Search() {
                                 <img className="search-img" src={item.url} alt={item.name}></img>
                             </Link>
                             </div>
-                    })}
+                    }):CategoryList.map((category)=>
+                        <div key={category.id} className="search-item">
+                            <Link to={{
+                                pathname:`/category/${category.name}`,
+                                category
+                            }}>
+                            <h3>{category.name}</h3>
+                            </Link>
+                        </div>
+                    )}
+                    
                     </div>}
                 
                 <input type="text" id="search-field" 

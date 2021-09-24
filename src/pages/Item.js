@@ -1,6 +1,5 @@
 import React from 'react'
 import { useLocation } from 'react-router'
-import './Item.css'
 
 function Item() {
 

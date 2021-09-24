@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { AddCategory, AddItem, AddSlide } from '../components';
 import db from '../config/fbConfig';
 import { CategoryContext, ItemsContext, SlideContext } from '../contexts';
-import './ManageItems.css'
 
 function RemoveItems() {
 

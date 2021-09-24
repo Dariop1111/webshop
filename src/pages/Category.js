@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import { ItemsContext } from '../contexts';
-import './category.css'
 
 
 function Category() {

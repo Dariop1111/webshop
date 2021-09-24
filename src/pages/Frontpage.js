@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Slide } from '../components';
 import { CategoryContext } from '../contexts';
 
-import './Frontpage.css'
 
 function Frontpage() {
 
