@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react'
 import db from '../config/fbConfig';
 import { SlideContext } from '../contexts/SlideContext';
 import AddImage from './AddImage';
-import './AddSlide.css'
+import './managerPage.css'
 
 function AddSlide() {
 
     const defaultSlide={url:""};
-    const {getSlides} = useContext(SlideContext);
+    const {getCollection, setSlideList} = useContext(SlideContext);
 
     const [newSlide, setNewSlide] = useState(defaultSlide);
 
@@ -18,9 +18,9 @@ function AddSlide() {
 
     const handleSubmit = (e)=>{
         //sends new Slide to db
-            db.collection("Slides").add(newSlide)
+            db.collection("slides").add(newSlide)
             .then((docRef)=>{
-                getSlides();
+                getCollection('slides', setSlideList);
                 setNewSlide(defaultSlide);
             }).catch((err)=>{
                 console.error(err);

@@ -1,20 +1,22 @@
 import React, { useContext, useState } from 'react'
 import db from '../config/fbConfig';
-import { ItemsContext } from '../contexts/ItemsContext';
+import { CategoryContext, ItemsContext } from '../contexts';
 import AddImage from './AddImage';
-import './AddItem.css'
+import './managerPage.css'
 
 function AddItem() {
 
-    const defaultItem={name:"", desc:"", price:0, url:""};
-    const {getItems} = useContext(ItemsContext);
-
+    const defaultItem={name:"", desc:"", price:0, category:"", url:""};
+    
+    
+    const {getCollection, setItemsList} = useContext(ItemsContext);
+    const {CategoryList} = useContext(CategoryContext);
     const [newItem, setNewItem] = useState(defaultItem);
 
     
 
     const isNewItemValid = ()=>{
-        return newItem.name!==defaultItem.name && newItem.price!==defaultItem.price;
+        return newItem.name!==defaultItem.name && newItem.price!==defaultItem.price && newItem.category !== defaultItem.category;
     }
 
 
@@ -33,7 +35,7 @@ function AddItem() {
         if(isNewItemValid()){
             db.collection("items").add(newItem)
             .then((docRef)=>{
-                getItems();
+                getCollection('items', setItemsList);
                 setNewItem(defaultItem);
             }).catch((err)=>{
                 console.error(err);
@@ -60,6 +62,19 @@ function AddItem() {
                     value={newItem.name}
                     onChange={handleChange}
                    ></input></div>
+            </div>
+
+            <div className="add-item-categories">
+                {CategoryList.map((category)=><div key={category.id}>
+                    <label className="add-item-label" htmlFor={category.name}>{category.name}</label>
+                    <input
+                        className="add-item-input-radio"
+                        name="category"
+                        type="radio"
+                        id={category.name}
+                        value={category.name}
+                        onChange={handleChange}></input>
+                </div>)}
             </div>
             <div>
                 <label className="add-item-label"htmlFor="desc">Item Description</label>

@@ -9,7 +9,7 @@ const Slideshow = () => {
 
     const {SlideList} = useContext(SlideContext);
     return (
-      <div>
+      <div className="slide-box">
         <Slide easing="ease">
           {SlideList.map((slide)=>
           <div className="each-slide" key={slide.id}>

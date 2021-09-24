@@ -1,42 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import {Header, Footer} from './components'
-import { ItemsContext } from './contexts/ItemsContext'
-import { About, Frontpage, Item, ManageItems} from './pages'
+import { About, Category, Frontpage, Item, ManageItems} from './pages'
 import './App.css'
 import db from './config/fbConfig'
-import { SlideContext } from './contexts/SlideContext'
+import { CategoryContext, ItemsContext, SlideContext } from './contexts'
 
 const App = () => {
         
     const [ItemsList, setItemsList] = useState([]);
     const [SlideList, setSlideList] = useState([]);
+    const [CategoryList, setCategoryList] = useState([]);
     // gets items from database and puts them in state
-    const getItems=async ()=> {
-        const querySnapshot = await db.collection("items").get();
-        const items = querySnapshot.docs.map(doc=>{return {...doc.data(), id:doc.id};
-        });
-        setItemsList(items);
-    }
-
-    const getSlides=async ()=>{
-        const querySnapshot = await db.collection("Slides").get();
-        const slides = querySnapshot.docs.map(doc=>{return {...doc.data(), id:doc.id};
-        });
-        setSlideList(slides);
+    const getCollection=async (name, setFunc)=>{
+        const querySnapshot = await db.collection(name).get();
+        const collection = querySnapshot.docs.map(doc=>{return {...doc.data(), id:doc.id};});
+        setFunc(collection);
     }
     // calls getItems
     useEffect( ()=>{
-        
-        getItems();
-        getSlides();
+        getCollection('items', setItemsList);
+        getCollection('slides', setSlideList);
+        getCollection('categories', setCategoryList)
     }, [])
     
     return (
         <Router>
             <div>
-            <ItemsContext.Provider value={{ItemsList, setItemsList, getItems}}>
-            <SlideContext.Provider value={{SlideList, setSlideList, getSlides}}>
+            <ItemsContext.Provider value={{ItemsList, setItemsList, getCollection}}>
+            <SlideContext.Provider value={{SlideList, setSlideList, getCollection}}>
+            <CategoryContext.Provider value={{CategoryList, setCategoryList, getCollection}}>
                 <Header/>
                 
                     <Switch>
@@ -46,6 +39,9 @@ const App = () => {
                         <Route path="/manage">
                             <ManageItems/>
                         </Route>
+                        <Route path="/category/:name">
+                            <Category/>
+                        </Route>
                         <Route path="/item/:id">
                             <Item/>
                         </Route>
@@ -53,6 +49,7 @@ const App = () => {
                             <Frontpage/>
                         </Route>
                     </Switch>
+                </CategoryContext.Provider>
                 </SlideContext.Provider>
                 </ItemsContext.Provider>
                 <Footer/>
