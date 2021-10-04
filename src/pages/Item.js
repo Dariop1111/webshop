@@ -1,9 +1,8 @@
 import React from 'react'
-import { useLocation } from 'react-router'
 
 function Item() {
 
-    const {item} = useLocation();
+    const item = JSON.parse(localStorage.getItem('item'));
     return (
         <div className="itempage box">
             <div className="itempage-col1">

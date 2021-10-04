@@ -15,7 +15,8 @@ function Frontpage() {
                 <div key={category.id} className="frontpage-category">
                     <Link to={{
                         pathname:`/category/${category.name}`,
-                        category
+                    }} onClick={()=>{
+                        localStorage.setItem("category", JSON.stringify(category));
                     }}>
                     {category.name}
                     </Link>

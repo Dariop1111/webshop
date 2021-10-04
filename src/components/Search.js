@@ -21,18 +21,20 @@ function Search() {
                             <Link to={
                                 {
                                     pathname:`/item/${item.id}`,
-                                    item,
-                                }}
-                                onClick={()=>{setDropdown(false)}}>
+                                }}onClick={()=>{
+                                    localStorage.setItem("item", JSON.stringify(item));
+                                    setDropdown(false)
+                                }}>
                                 <h3>{item.name}</h3>
                                 <img className="search-img" src={item.url} alt={item.name}></img>
                             </Link>
                             </div>
                     }):CategoryList.map((category)=>
-                        <div key={category.id} className="search-item">
+                        <div key={category.id} className="search-category">
                             <Link to={{
                                 pathname:`/category/${category.name}`,
-                                category
+                            }}  onClick={()=>{
+                                localStorage.setItem("category", JSON.stringify(category));
                             }}>
                             <h3>{category.name}</h3>
                             </Link>

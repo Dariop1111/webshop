@@ -29,7 +29,7 @@ function RemoveItems() {
             <div>
             {SlideList.map((slide)=>{
                     return <div key={slide.id} className="table-row">
-                        <img src={slide.url} alt="img" className="slide-img-preview"></img>
+                        <div><img src={slide.url} alt="img" className="slide-img-preview"></img></div>
                         <div><button onClick={()=>handleDelete(slide.id, 'slides', setSlideList)}>Delete</button></div>
                         </div>
                 })}
@@ -37,11 +37,11 @@ function RemoveItems() {
             <AddItem/>
             <div className="table-header">
                 <div>Ime</div>
-                <div>Opis</div>
                 <div>Cijena</div>
                 <div>Kategorija</div>
             </div>
-            {ItemsList.map((item)=>{
+            {ItemsList.sort((a, b)=>a.price-b.price)
+                      .map((item)=>{
                     return <div key={item.id} className="table-row">
                         <div>{item.name}</div>
                         <div>{item.price} kn</div>

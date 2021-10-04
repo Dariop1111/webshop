@@ -5,7 +5,6 @@ import { About, Category, Frontpage, Item, ManageItems} from './pages'
 import './App.css'
 import db from './config/fbConfig'
 import { CategoryContext, ItemsContext, SlideContext } from './contexts'
-
 const App = () => {
         
     const [ItemsList, setItemsList] = useState([]);
@@ -17,6 +16,9 @@ const App = () => {
         const collection = querySnapshot.docs.map(doc=>{return {...doc.data(), id:doc.id};});
         setFunc(collection);
     }
+
+  
+    
     // calls getItems
     useEffect( ()=>{
         getCollection('items', setItemsList);

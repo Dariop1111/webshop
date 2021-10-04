@@ -1,6 +1,16 @@
+
+:root{
+    --primary-bg:powderblue;
+    --secondary-bg:slategrey;
+    --button-bg:darkslateblue;
+}
+
+
+
 body{
     font-family:Arial, Helvetica, sans-serif;
     margin: 0;
+    background-color: var(--secondary-bg);
 }
 li{
     list-style: none;
@@ -13,7 +23,7 @@ a{
     border-radius: 20px;
     margin: 20px 5px;
     padding: 20px;
-    background-color: lightblue;
+    background-color: var(--primary-bg);
 }
 
 .itempage{
@@ -44,12 +54,17 @@ a{
 
 }
 .frontpage-category{
-    background-color:lightsteelblue;
+    background-color:var(--button-bg);
     margin: 5px 1%;
     padding: 10px 1%;
     border-radius: 20px;
     width: 21%;
     text-align: center;
+}
+
+.frontpage-category a{
+    color: white;
+    text-decoration: none;
 }
 .slide-box{
     width: 90%;
@@ -82,10 +97,46 @@ a{
     width: 100%;
 }
 
+
+
+
+
+
+
+
+
+
+
+.manageitems-table{
+    display: flex;
+    flex-direction: column;
+}
+.table-header{
+    display: flex;
+    flex-direction: row;
+}
+.table-header div{
+    width: 20%;
+}
+.table-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.table-row div{
+    width: 20%;
+}
+
+.slide-img-preview{
+    width: 100%;
+}
+
+
+
 .add-slide{
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    background-color: var(--primary-bg);
 }
 .add-slide div{
     flex:1;
@@ -124,7 +175,7 @@ a{
 .add-item{
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
+    background-color: var(--primary-bg);
 }
 .add-item div{
     flex:1;
@@ -168,9 +219,25 @@ a{
     width: 5%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .header{
     display:flex;
-    background-color: gray;
+    background-color:var(--secondary-bg);
     text-align: center;
 }
 .header-col1{
@@ -189,6 +256,15 @@ a{
 .header-menu li{
     flex: 1;
     flex-direction: row;
+    background-color:var(--button-bg);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.header-menu li a {
+    color: white;
+    text-decoration: none;
 }
 
 .search{
@@ -196,6 +272,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 .search input{
     width: 100%;
@@ -215,13 +292,14 @@ a{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top:30px;
+    top:40px;
     left:0px;
-    background-color: #f6f6f6;
+    background-color: var(--secondary-bg);
     width: 100%;
     border: 1px solid #ddd;
     z-index: 1;
     overflow-y: scroll;
+    max-height: 600px;
   }
 
 
@@ -229,18 +307,52 @@ a{
       display: flex;
       text-align: center;
       align-items: center;
+      
+      background-color: var(--primary-bg);
+      border-radius: 5px;
+      margin: 5px;
   }
+  .search-category{
+    background-color: var(--primary-bg);
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  .search-category h3{
+      width: 100%;
+  }
+
   .search-item h3{
       width: 82%;
   }
   .search-img{
       width: 18%;
+      border-radius: 5px;
+      padding: 1px;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   .footer{
     display:flex;
     flex-direction: row;
-    background-color: darkgray;
+    background-color: var(--secondary-bg);
 }
 .footer-col1{
     flex: 1;

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ItemsContext } from '../contexts';
 
 
 function Category() {
 
     const {ItemsList} = useContext(ItemsContext);
-    const {category} = useLocation()
+    const category = JSON.parse(localStorage.getItem("category"));
     
     return (
         <div className="category-itemlist box">
@@ -15,9 +15,10 @@ function Category() {
                         <Link to={
                             {
                                 pathname:`/item/${item.id}`,
-                                item,
                             }
-                        }>
+                        }  onClick={()=>{
+                            localStorage.setItem("item", JSON.stringify(item));
+                        }}>
                             <h3>{item.name}</h3>
                             <img className="category-img" src={item.url} alt={item.name}></img>
                         </Link>
